@@ -88,7 +88,7 @@ public int sumRange(int start, int end) {
 public int countMultiples(int number, int limit) {
     if(number == 0) return 0;
     return limit / number;
-    
+
     
 }
 
@@ -97,14 +97,22 @@ public int countMultiples(int number, int limit) {
 // Return: -1 if num1 < num2, 0 if equal, 1 if num1 > num2
 // Handle null cases: null is considered less than any number
 public int compareIntegers(Integer num1, Integer num2) {
-    // Your code here
-    
+    if (num1 == null && num2 == null) return 0;
+    if (num1 == null) return -1;
+    if (num2 == null) return 1;
+    return Integer.compare(num1, num2);    
 }
+
+
 
 // Try to parse string to Integer, return null if it fails
 public Integer parseIntegerSafely(String text) {
-    // Your code here
-    
+    try {
+        return Integer.parseInt(text);
+    } catch (NumberFormatException e) {
+        return null;
+    }
+
 }
 
 // Exercise 7: Mathematical Sequences
@@ -182,10 +190,12 @@ System.out.println("Sum 1 to 5: " + sumRange(1, 5));
 System.out.println("Sum 3 to 7: " + sumRange(3, 7));
         // Should print 25
 System.out.println("Multiples of 3 up to 10: " + countMultiples(3, 10)); // Should print 3 (3,6,9)
-/*
+
 System.out.println("\nTesting Integer Objects:");
 System.out.println("Compare 5, 3: " + compareIntegers(5, 3));   // Should print 1
-System.out.println("Compare null, 5: " + compareIntegers(null, 5)); // Should print -1
+
+System.out.println("Compare null, 5: " + compareIntegers(null, 5));
+/* // Should print -1
 System.out.println("Parse '123': " + parseIntegerSafely("123")); // Should print 123
 System.out.println("Parse 'abc': " + parseIntegerSafely("abc")); // Should print null
 
