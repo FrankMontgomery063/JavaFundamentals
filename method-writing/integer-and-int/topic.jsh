@@ -133,8 +133,13 @@ public int fibonacci(int n) {
 
 // Calculate n! (n factorial)
 public long factorial(int n) {
-    // Your code here
-    
+    if(n < 0) return 0;
+    long result = 1;
+    for (int i = 2; i <= n; i++) {
+        result *= i;
+    }
+    return result;
+
 }
 
 // Exercise 8: Number Conversion
@@ -210,10 +215,11 @@ System.out.println("Parse 'abc': " + parseIntegerSafely("abc")); // Should print
 
 System.out.println("\nTesting Mathematical Sequences:");
 System.out.println("Fibonacci(0): " + fibonacci(0));            // Should print 0
-/*
-System.out.println("Fibonacci(6): " + fibonacci(6));            // Should print 8
-System.out.println("Factorial(5): " + factorial(5));            // Should print 120
 
+System.out.println("Fibonacci(6): " + fibonacci(6));            // Should print 8
+
+System.out.println("Factorial(5): " + factorial(5));            // Should print 120
+/*
 System.out.println("\nTesting Number Conversion:");
 System.out.println("10 in binary: " + toBinaryString(10));      // Should print "1010"
 System.out.println("Binary 1010: " + fromBinaryString("1010")); // Should print 10
