@@ -145,7 +145,8 @@ public long factorial(int n) {
 // Exercise 8: Number Conversion
 // Convert integer to binary string representation
 public String toBinaryString(int number) {
-    // Your code here
+    return Integer.toBinaryString(number);
+
     
 }
 
@@ -219,9 +220,10 @@ System.out.println("Fibonacci(0): " + fibonacci(0));            // Should print 
 System.out.println("Fibonacci(6): " + fibonacci(6));            // Should print 8
 
 System.out.println("Factorial(5): " + factorial(5));            // Should print 120
-/*
+
 System.out.println("\nTesting Number Conversion:");
 System.out.println("10 in binary: " + toBinaryString(10));      // Should print "1010"
+/*
 System.out.println("Binary 1010: " + fromBinaryString("1010")); // Should print 10
 
 System.out.println("\nTesting Array Statistics:");
