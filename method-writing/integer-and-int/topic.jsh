@@ -118,9 +118,18 @@ public Integer parseIntegerSafely(String text) {
 // Exercise 7: Mathematical Sequences
 // Return the nth Fibonacci number (0, 1, 1, 2, 3, 5, 8, 13...)
 public int fibonacci(int n) {
-    // Your code here
-    
+    if(n < 0) return 0;
+    if (n == 1) return 1;
+    int a = 0, b = 1;
+    for( int i = 2; i <= n; i++) {
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+    return b;
 }
+    
+
 
 // Calculate n! (n factorial)
 public long factorial(int n) {
@@ -195,12 +204,13 @@ System.out.println("\nTesting Integer Objects:");
 System.out.println("Compare 5, 3: " + compareIntegers(5, 3));   // Should print 1
 
 System.out.println("Compare null, 5: " + compareIntegers(null, 5));
-/* // Should print -1
+ // Should print -1
 System.out.println("Parse '123': " + parseIntegerSafely("123")); // Should print 123
 System.out.println("Parse 'abc': " + parseIntegerSafely("abc")); // Should print null
 
 System.out.println("\nTesting Mathematical Sequences:");
 System.out.println("Fibonacci(0): " + fibonacci(0));            // Should print 0
+/*
 System.out.println("Fibonacci(6): " + fibonacci(6));            // Should print 8
 System.out.println("Factorial(5): " + factorial(5));            // Should print 120
 
