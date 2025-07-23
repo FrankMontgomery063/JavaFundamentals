@@ -152,7 +152,8 @@ public String toBinaryString(int number) {
 
 // Convert binary string back to integer
 public int fromBinaryString(String binary) {
-    // Your code here
+    return Integer.parseInt(binary, 2);
+    
     
 }
 
@@ -223,9 +224,9 @@ System.out.println("Factorial(5): " + factorial(5));            // Should print 
 
 System.out.println("\nTesting Number Conversion:");
 System.out.println("10 in binary: " + toBinaryString(10));      // Should print "1010"
-/*
-System.out.println("Binary 1010: " + fromBinaryString("1010")); // Should print 10
 
+System.out.println("Binary 1010: " + fromBinaryString("1010")); // Should print 10
+/*
 System.out.println("\nTesting Array Statistics:");
 int[] testArray = {1, 5, 3, 9, 2};
 System.out.println("Max of [1,5,3,9,2]: " + findMax(testArray)); // Should print 9
