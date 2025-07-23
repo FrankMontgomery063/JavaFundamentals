@@ -171,8 +171,11 @@ public int findMax(int[] numbers) {
 
 // Calculate the average as a double
 public double calculateAverage(int[] numbers) {
-    // Your code here
-    
+    int sum = 0;
+    for (int num : numbers) {
+        sum += num;
+    }
+    return (double) sum / numbers.length;
 }
 
 // Test your methods here - uncomment and modify as needed
@@ -236,6 +239,6 @@ System.out.println("\nTesting Array Statistics:");
 int[] testArray = {1, 5, 3, 9, 2};
 
 System.out.println("Max of [1,5,3,9,2]: " + findMax(testArray));
-/*   // Should print 9
+   // Should print 9
 System.out.println("Average of [1,5,3,9,2]: " + calculateAverage(testArray)); // Should print 4.0
-*/
+
