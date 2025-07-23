@@ -5,41 +5,68 @@ import java.util.ArrayList;
 // Exercise 1: Basic Class Creation
 // Create a Person class with name and age fields
 class Person {
-    // Your fields here
+    String name;
+    int age;
     
-    // Your constructor here
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String introduce() {
+        return "Hello, I'm " + name + " and I'm " + age + " years old.";
     
-    // Your introduce() method here
+    }
+    
+    
     
 }
 
 // Exercise 2: Class with Methods
 // Create a BankAccount class with account operations
-class BankAccount {
-    // Your fields here
+public class BankAccount {
+    String accountNumber;
+    double balance;
+     
+    public BankAccount(String accountNumber) {
+        this.accountNumber = accountNumber;
+        this.balance = 0.0;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if(amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
     
-    // Your constructor here
+    public double getBalance() {
+        return balance;
     
-    // Your deposit method here
-    
-    // Your withdraw method here
-    
-    // Your getBalance method here
-    
-    // Your getAccountInfo method here
-    
+    }
+
+    public String getAccountInfo() {
+        return "accountNumber: " + accountNumber + ", Balance: $" + balance; 
+    }
+
+
 }
 
 // Exercise 3: Object Creation and Usage
 // Create and return a Person object
 public Person createPerson(String name, int age) {
-    // Your code here
+        name
+    return null;
     
 }
 
 // Create and return a BankAccount object
 public BankAccount createBankAccount(String accountNumber) {
     // Your code here
+    return null;
     
 }
 
@@ -65,6 +92,7 @@ class Car {
 // Compare two cars and return which is older
 public Car compareCars(Car car1, Car car2) {
     // Your code here
+    return null;
     
 }
 
@@ -126,7 +154,7 @@ class Library {
 }
 
 // Test your classes here - uncomment and modify as needed
-/*
+
 System.out.println("Testing Person class:");
 Person person1 = createPerson("Alice", 30);
 Person person2 = new Person("Bob", 25);
@@ -192,4 +220,4 @@ System.out.println("After checking out 1984: " + library.getAvailableBooks());
 
 library.returnBook("1984");
 System.out.println("After returning 1984: " + library.getAvailableBooks());
-*/
+
