@@ -119,21 +119,33 @@ public int compareDoubles(Double d1, Double d2) {
 // Exercise 7: Array Statistics
 // Find maximum value in array
 public double findMaximum(double[] numbers) {
-    // Your code here
-    
+    double max = numbers [0];
+    for (int i = 1; i < numbers.length; i++) {
+        if (numbers[i] > max) {
+            max = numbers [i];
+        }
+    }
+    return max;
 }
 
 // Calculate arithmetic mean (average) of array
 public double calculateMean(double[] numbers) {
-    // Your code here
-    
+    double sum = 0;
+    for (double num : numbers) {
+        sum += num;
+    }
+    return sum / numbers.length;
 }
 
 // Calculate standard deviation of array
 public double calculateStandardDeviation(double[] numbers) {
-    // Your code here
-    // Hint: Standard deviation = √(Σ(x - mean)² / n)
-    
+    double mean = calculateMean(numbers);
+    double sumSquaredDiffs = 0;
+    for (double num : numbers) {
+        sumSquaredDiffs += Math.pow(num - mean, 2);
+    }
+    return Math.sqrt(sumSquaredDiffs / numbers.length);
+
 }
 
 // Test your methods here - uncomment and modify as needed
@@ -177,16 +189,18 @@ System.out.println("Parse '3.14': " + parseDoubleSafely("3.14"));
 System.out.println("Parse 'abc': " + parseDoubleSafely("abc"));           // Should print null
 
 System.out.println("Compare 3.5, 2.1: " + compareDoubles(3.5, 2.1));     // Should print 1
-/*
+
 System.out.println("Compare null, 5.0: " + compareDoubles(null, 5.0));   // Should print -1
 
 System.out.println("\nTesting Array Statistics:");
 double[] testArray = {1.1, 3.3, 2.2, 4.4, 1.1};
-System.out.println("Maximum: " + findMaximum(testArray));                 // Should print 4.4
-System.out.println("Mean: " + calculateMean(testArray));                  // Should print 2.42
+System.out.println("Maximum: " + findMaximum(testArray));
+                 // Should print 4.4
+System.out.println("Mean: " + calculateMean(testArray)); 
+                 // Should print 2.42
 System.out.println("Standard deviation: " + calculateStandardDeviation(testArray));
 
 // Test edge cases
 double[] emptyArray = {};
 // System.out.println("Mean of empty array: " + calculateMean(emptyArray)); // Test your error handling
-*/
+
