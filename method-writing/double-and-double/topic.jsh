@@ -4,45 +4,52 @@
 // Exercise 1: Basic Double Operations
 // Return the sum of two doubles
 public double calculateSum(double a, double b) {
-    // Your code here
+    return a + b;
+
     
 }
 
 // Return the average of three doubles
 public double calculateAverage(double a, double b, double c) {
-    // Your code here
+    return a * b;
     
 }
 
 // Exercise 2: Math Operations
 // Return the larger of two doubles
 public double findLarger(double a, double b) {
-    // Your code here
+    return Math.max(a, b);
+
     
 }
 
 // Return the absolute value of a double
 public double calculateAbsolute(double number) {
-    // Your code here
+    return Math.abs(number);
+
     
 }
 
 // Round double to nearest integer
 public int roundToNearestInt(double number) {
-    // Your code here
+    return (int) Math.round (number);
+
     
 }
 
 // Exercise 3: Precision and Comparison
 // Check if two doubles are equal within tolerance
 public boolean areDoublesEqual(double a, double b, double tolerance) {
-    // Your code here
+    return Math.abs(a - b) <= tolerance;
+    
     
 }
 
 // Format double to string with 2 decimal places
 public String formatToTwoDecimals(double number) {
-    // Your code here
+    return String.format("%.2f", number);
+    
+
     
 }
 
@@ -115,22 +122,26 @@ public double calculateStandardDeviation(double[] numbers) {
 }
 
 // Test your methods here - uncomment and modify as needed
-/*
+
 System.out.println("Testing Basic Operations:");
-System.out.println("3.5 + 2.7 = " + calculateSum(3.5, 2.7));           // Should print 6.2
+System.out.println("3.5 + 2.7 = " + calculateSum(3.5, 2.7)); 
+          // Should print 6.2
 System.out.println("Average of 1,2,3 = " + calculateAverage(1.0, 2.0, 3.0)); // Should print 2.0
 
 System.out.println("\nTesting Math Operations:");
 System.out.println("Larger of 3.14, 2.71: " + findLarger(3.14, 2.71)); // Should print 3.14
+
 System.out.println("Absolute of -5.5: " + calculateAbsolute(-5.5));     // Should print 5.5
+
 System.out.println("Round 3.7: " + roundToNearestInt(3.7));             // Should print 4
 System.out.println("Round 3.2: " + roundToNearestInt(3.2));             // Should print 3
 
 System.out.println("\nTesting Precision:");
-System.out.println("0.1+0.2 equals 0.3? " + areDoublesEqual(0.1 + 0.2, 0.3, 0.0001)); // Should print true
+System.out.println("0.1+0.2 equals 0.3? " + areDoublesEqual(0.1 + 0.2, 0.3, 0.0001));
+// Should print true
 System.out.println("Exact comparison: " + (0.1 + 0.2 == 0.3));          // Should print false!
 System.out.println("3.14159 formatted: " + formatToTwoDecimals(3.14159)); // Should print "3.14"
-
+/*
 System.out.println("\nTesting Mathematical Calculations:");
 System.out.println("Circle area (r=5): " + calculateCircleArea(5.0));    // Should print ~78.54
 System.out.println("Distance (0,0)-(3,4): " + calculateDistance(0, 0, 3, 4)); // Should print 5.0
