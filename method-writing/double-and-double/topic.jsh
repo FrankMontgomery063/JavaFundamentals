@@ -74,27 +74,34 @@ public double calculateDistance(double x1, double y1, double x2, double y2) {
 // Calculate compound interest: principal × (1 + rate)^years
 public double calculateCompoundInterest(double principal, double rate, int years) {
     return principal * Math.pow(1 + rate, years);
-    
+
     
 }
 
 // Exercise 5: Range and Validation
 // Check if value is between min and max (inclusive)
 public boolean isInRange(double value, double min, double max) {
-    // Your code here
+    return value >=min && value <= max;
+
     
 }
 
 // Constrain value to be within min and max bounds
 public double clampValue(double value, double min, double max) {
-    // Your code here
+    if(value < min) return min;
+    if(value > max) return max;
+    return value;
     
 }
 
 // Exercise 6: Double Object Practice
 // Safely parse string to Double, return null if fails
 public Double parseDoubleSafely(String text) {
-    // Your code here
+    try {
+        return Double.parseDouble(text);
+    } catch (NumberFormatException e) {
+        return null;
+    }
     
 }
 
@@ -102,7 +109,10 @@ public Double parseDoubleSafely(String text) {
 // Return: -1 if d1 < d2, 0 if equal, 1 if d1 > d2
 // null is considered less than any number
 public int compareDoubles(Double d1, Double d2) {
-    // Your code here
+    if (d1 == null && d2 == null) return 0;
+    if (d1 == null) return -1;
+    if (d2 == null) return 1;
+    return Double.compare(d1, d2);
     
 }
 
@@ -152,17 +162,22 @@ System.out.println("Circle area (r=5): " + calculateCircleArea(5.0));
 // Should print ~78.54
 System.out.println("Distance (0,0)-(3,4): " + calculateDistance(0, 0, 3, 4)); // Should print 5.0
 System.out.println("Compound interest $1000 at 5% for 3 years: " + calculateCompoundInterest(1000, 0.05, 3)); // Should print ~1157.63
-/*
+
 System.out.println("\nTesting Range Operations:");
-System.out.println("2.5 in range [1,5]: " + isInRange(2.5, 1.0, 5.0));  // Should print true
-System.out.println("10.0 in range [1,5]: " + isInRange(10.0, 1.0, 5.0)); // Should print false
+System.out.println("2.5 in range [1,5]: " + isInRange(2.5, 1.0, 5.0)); 
+ // Should print true
+System.out.println("10.0 in range [1,5]: " + isInRange(10.0, 1.0, 5.0)); 
+ Should print false
 System.out.println("Clamp 10.0 to [1,5]: " + clampValue(10.0, 1.0, 5.0)); // Should print 5.0
 System.out.println("Clamp -2.0 to [1,5]: " + clampValue(-2.0, 1.0, 5.0)); // Should print 1.0
 
 System.out.println("\nTesting Double Objects:");
-System.out.println("Parse '3.14': " + parseDoubleSafely("3.14"));        // Should print 3.14
+System.out.println("Parse '3.14': " + parseDoubleSafely("3.14")); 
+       // Should print 3.14
 System.out.println("Parse 'abc': " + parseDoubleSafely("abc"));           // Should print null
+
 System.out.println("Compare 3.5, 2.1: " + compareDoubles(3.5, 2.1));     // Should print 1
+/*
 System.out.println("Compare null, 5.0: " + compareDoubles(null, 5.0));   // Should print -1
 
 System.out.println("\nTesting Array Statistics:");
