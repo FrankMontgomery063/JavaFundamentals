@@ -48,7 +48,7 @@ public boolean areDoublesEqual(double a, double b, double tolerance) {
 // Format double to string with 2 decimal places
 public String formatToTwoDecimals(double number) {
     return String.format("%.2f", number);
-    
+
 
     
 }
@@ -56,20 +56,25 @@ public String formatToTwoDecimals(double number) {
 // Exercise 4: Mathematical Calculations
 // Calculate area of circle (π × r²)
 public double calculateCircleArea(double radius) {
-    // Your code here
+    return Math.PI * radius * radius;
+
     
 }
 
 // Calculate distance between two points using distance formula
 // √[(x2-x1)² + (y2-y1)²]
 public double calculateDistance(double x1, double y1, double x2, double y2) {
-    // Your code here
+    double dx = x2 - x1;
+    double dy = y2 - y1;
+    return Math.sqrt(dx * dx + dy * dy);
+
     
 }
 
 // Calculate compound interest: principal × (1 + rate)^years
 public double calculateCompoundInterest(double principal, double rate, int years) {
-    // Your code here
+    return principal * Math.pow(1 + rate, years);
+    
     
 }
 
@@ -141,12 +146,13 @@ System.out.println("0.1+0.2 equals 0.3? " + areDoublesEqual(0.1 + 0.2, 0.3, 0.00
 // Should print true
 System.out.println("Exact comparison: " + (0.1 + 0.2 == 0.3));          // Should print false!
 System.out.println("3.14159 formatted: " + formatToTwoDecimals(3.14159)); // Should print "3.14"
-/*
+
 System.out.println("\nTesting Mathematical Calculations:");
-System.out.println("Circle area (r=5): " + calculateCircleArea(5.0));    // Should print ~78.54
+System.out.println("Circle area (r=5): " + calculateCircleArea(5.0));
+// Should print ~78.54
 System.out.println("Distance (0,0)-(3,4): " + calculateDistance(0, 0, 3, 4)); // Should print 5.0
 System.out.println("Compound interest $1000 at 5% for 3 years: " + calculateCompoundInterest(1000, 0.05, 3)); // Should print ~1157.63
-
+/*
 System.out.println("\nTesting Range Operations:");
 System.out.println("2.5 in range [1,5]: " + isInRange(2.5, 1.0, 5.0));  // Should print true
 System.out.println("10.0 in range [1,5]: " + isInRange(10.0, 1.0, 5.0)); // Should print false
