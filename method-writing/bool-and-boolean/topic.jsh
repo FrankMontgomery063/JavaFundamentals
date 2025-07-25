@@ -44,22 +44,29 @@ public boolean isLeapYear(int year) {
 // Exercise 6: Password Strength Validator
 // Return true if password is at least 8 chars AND has at least one uppercase
 public boolean isStrongPassword(String password) {
-    // Your code here
-    
+    if (password == null || pass.length() < 8) return false;
+    for( char c : password.toCharArray()) {
+        if (Character.isUpperCase(c)) return true;
+    }
+    return false;
 }
 
 // Exercise 7: Triangle Validator
 // Return true if three sides can form a valid triangle
 // Rule: sum of any two sides must be greater than the third side
 public boolean isValidTriangle(int a, int b, int c) {
-    // Your code here
+    return (a + b > c) && ( a + c > b) && (b + c > a);
+
     
 }
 
 // Exercise 8: Boolean Object Practice
 // Return true if both Boolean objects have the same value (handle nulls)
 public boolean compareBoolean(Boolean b1, Boolean b2) {
-    // Your code here
+    if (b1 == null && b2 == null) return true;
+    if (b1 == null || b2 == null) return false;
+    return b1.equals(b2);
+    
     
 }
 
@@ -87,7 +94,7 @@ public boolean xorGate(boolean a, boolean b) {
 }
 
 // Test your methods here - uncomment and modify as needed
-*/
+
 System.out.println("Testing isAdult:");
 System.out.println("Age 17: " + isAdult(17));      // Should print false
 
@@ -99,12 +106,12 @@ System.out.println("\nTesting isInRange:");
 System.out.println("5 in range 1-10: " + isInRange(5, 1, 10));    // Should print true
 System.out.println("15 in range 1-10: " + isInRange(15, 1, 10));  // Should print false
 System.out.println("1 in range 1-10: " + isInRange(1, 1, 10));    // Should print true
-/*
+
 System.out.println("\nTesting isValidEmail:");
 System.out.println("user@domain.com: " + isValidEmail("user@domain.com"));  // Should print true
 System.out.println("invalid-email: " + isValidEmail("invalid-email"));      // Should print false
 System.out.println("user@domain: " + isValidEmail("user@domain"));          // Should print false
-*/
+
 System.out.println("\nTesting isEven:");
 System.out.println("4 is even: " + isEven(4));     // Should print true
 System.out.println("5 is even: " + isEven(5));     // Should print false
@@ -115,7 +122,7 @@ System.out.println("2024: " + isLeapYear(2024));   // Should print true
 System.out.println("2023: " + isLeapYear(2023));   // Should print false
 System.out.println("1900: " + isLeapYear(1900));   // Should print false
 System.out.println("2000: " + isLeapYear(2000));   // Should print true
-/*
+
 System.out.println("\nTesting isStrongPassword:");
 System.out.println("MyPass123: " + isStrongPassword("MyPass123"));     // Should print true
 System.out.println("weak: " + isStrongPassword("weak"));               // Should print false
@@ -131,7 +138,7 @@ System.out.println("true,true: " + compareBoolean(true, true));           // Sho
 System.out.println("true,false: " + compareBoolean(true, false));         // Should print false
 System.out.println("null,null: " + compareBoolean(null, null));           // Should print true
 System.out.println("true,null: " + compareBoolean(true, null));           // Should print false
-
+/*
 System.out.println("\nTesting Logic Gates:");
 System.out.println("AND true,false: " + andGate(true, false));    // Should print false
 System.out.println("OR true,false: " + orGate(true, false));      // Should print true
