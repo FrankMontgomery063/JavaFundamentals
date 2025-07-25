@@ -66,7 +66,7 @@ public boolean compareBoolean(Boolean b1, Boolean b2) {
     if (b1 == null && b2 == null) return true;
     if (b1 == null || b2 == null) return false;
     return b1.equals(b2);
-    
+
     
 }
 
@@ -74,22 +74,22 @@ public boolean compareBoolean(Boolean b1, Boolean b2) {
 // Simulate basic logic gates
 
 public boolean andGate(boolean a, boolean b) {
-    // Your code here
+    return a && b;
     
 }
 
 public boolean orGate(boolean a, boolean b) {
-    // Your code here
+    return a || b;
     
 }
 
 public boolean notGate(boolean a) {
-    // Your code here
+    return !a;
     
 }
 
 public boolean xorGate(boolean a, boolean b) {
-    // Your code here (true if exactly one input is true)
+    return a ^ b;
     
 }
 
@@ -138,11 +138,11 @@ System.out.println("true,true: " + compareBoolean(true, true));           // Sho
 System.out.println("true,false: " + compareBoolean(true, false));         // Should print false
 System.out.println("null,null: " + compareBoolean(null, null));           // Should print true
 System.out.println("true,null: " + compareBoolean(true, null));           // Should print false
-/*
+
 System.out.println("\nTesting Logic Gates:");
 System.out.println("AND true,false: " + andGate(true, false));    // Should print false
 System.out.println("OR true,false: " + orGate(true, false));      // Should print true
 System.out.println("NOT true: " + notGate(true));                 // Should print false
 System.out.println("XOR true,false: " + xorGate(true, false));    // Should print true
 System.out.println("XOR true,true: " + xorGate(true, true));      // Should print false
-*/
+
