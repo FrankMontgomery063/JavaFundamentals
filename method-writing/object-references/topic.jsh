@@ -5,19 +5,23 @@ import java.util.ArrayList;
 // Exercise 1: Reference Basics
 // Create and return array of 3 Strings
 public String[] createStringArray() {
-    // Your code here
+    return new String[] {"Apple", "Banana", "Cherry"};
     
 }
 
 // Check if two String references point to same object (using ==)
 public boolean areReferencesEqual(String str1, String str2) {
-    // Your code here
+    return str1 == str2;
+
     
 }
 
 // Check if two String references have same content (using equals)
 public boolean areContentsEqual(String str1, String str2) {
-    // Your code here
+    if(str1 == null || str2 == null) {
+        return false;
+    }
+    return str1.equals(str2);
     
 }
 
@@ -138,7 +142,7 @@ public ArrayList<String> getListReference(ArrayList<String> list) {
 }
 
 // Test your methods here - uncomment and modify as needed
-/*
+
 System.out.println("Testing Reference Basics:");
 String[] array = createStringArray();
 System.out.println("Array created with length: " + array.length);
@@ -150,7 +154,7 @@ String str3 = new String("Hello");
 System.out.println("str1 == str2 (literals): " + areReferencesEqual(str1, str2));     // Should be true
 System.out.println("str1 == str3 (new object): " + areReferencesEqual(str1, str3));  // Should be false
 System.out.println("str1.equals(str3): " + areContentsEqual(str1, str3));            // Should be true
-
+/*
 System.out.println("\nTesting Null Handling:");
 System.out.println("null is null: " + isNullReference(null));              // Should be true
 System.out.println("'Hello' is null: " + isNullReference("Hello"));        // Should be false
