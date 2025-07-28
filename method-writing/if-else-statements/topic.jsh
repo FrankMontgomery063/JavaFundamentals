@@ -48,16 +48,27 @@ public String getSign(int number) {
 // Exercise 4: Temperature Check
 // Classify temperature as hot, warm, or cold
 public String checkTemperature(double temp) {
-    // Your code here
-    
+    if(temp > 80) {
+       return "Hot";
+    } else if(temp >= 60) {
+       return "Warm";
+    } else {
+    return "Cold";
+    }
 }
 
 // Exercise 5: Login Validation
 // Check if username and password are valid (not null and not empty)
 public boolean validateLogin(String username, String password) {
-    // Your code here
-    
+    if (username != null && !username.isEmpty()&&
+        password != null && !password.isEmpty()) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
+
 
 // Test your methods here - uncomment and modify as needed
 
@@ -76,7 +87,7 @@ System.out.println("\nTesting getSign:");
 System.out.println(getSign(10));   // Should print "Positive"
 System.out.println(getSign(0));    // Should print "Zero"
 System.out.println(getSign(-5));   // Should print "Negative"
-/*
+
 System.out.println("\nTesting checkTemperature:");
 System.out.println(checkTemperature(85.0));  // Should print "Hot"
 System.out.println(checkTemperature(70.0));  // Should print "Warm"
@@ -87,4 +98,4 @@ System.out.println(validateLogin("user", "pass"));     // Should print true
 System.out.println(validateLogin("", "pass"));         // Should print false
 System.out.println(validateLogin("user", ""));         // Should print false
 System.out.println(validateLogin(null, "pass"));       // Should print false
-*/
+
