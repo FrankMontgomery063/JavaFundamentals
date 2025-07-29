@@ -35,34 +35,44 @@ public boolean isNullReference(Object obj) {
 
 // Convert object to string, return "null" if object is null
 public String safeToString(Object obj) {
-    return (obj == null) ? "null" : obj.toString();
+    return return (obj == null) ? "null" : obj.toString();
 
     
 }
 
 // Return length of string, or 0 if null
 public int safeLength(String str) {
-    
+    return (str == null) ? 0 : str.length();
     
 }
 
 // Exercise 3: Array References
 // Copy the reference (not content) of an array
 public int[] copyArrayReference(int[] original) {
-    // Your code here
+    return original;
+
     
 }
 
 // Create new array with same content
 public int[] copyArrayContent(int[] original) {
-    // Your code here
-    
+    if (original == null) {
+        return null;
+    }
+    int[] copy = new int[original.length];
+    for (int i = 0; i < original.length; i++) {
+        copy[i] = original[i];
+    }
+    return copy;
 }
+    
+
 
 // Change value in array at specified index
 public void modifyArray(int[] array, int index, int newValue) {
-    // Your code here
-    
+    if (array != null && index >= 0 && index < array.length) {
+        array[index]  = newValue;
+    }
 }
 
 // Exercise 4: Object State Changes
@@ -159,11 +169,14 @@ System.out.println("str1.equals(str3): " + areContentsEqual(str1, str3));       
 
 System.out.println("\nTesting Null Handling:");
 System.out.println("null is null: " + isNullReference(null));              // Should be true
-/*
+
 System.out.println("'Hello' is null: " + isNullReference("Hello"));        // Should be false
+
 System.out.println("Safe toString of null: " + safeToString(null));        // Should be "null"
-System.out.println("Safe toString of 'Hi': " + safeToString("Hi"));        // Should be "Hi"
+System.out.println("Safe toString of 'Hi': " + safeToString("Hi")); 
+       // Should be "Hi"
 System.out.println("Safe length of null: " + safeLength(null));            // Should be 0
+
 System.out.println("Safe length of 'Hello': " + safeLength("Hello"));      // Should be 5
 
 System.out.println("\nTesting Array References:");
@@ -178,7 +191,7 @@ modifyArray(original, 0, 99);
 System.out.println("Original after modify: " + java.util.Arrays.toString(original));     // [99, 2, 3]
 System.out.println("Reference copy after modify: " + java.util.Arrays.toString(refCopy)); // [99, 2, 3]
 System.out.println("Content copy after modify: " + java.util.Arrays.toString(contentCopy)); // [1, 2, 3]
-
+/*
 System.out.println("\nTesting Object State Changes:");
 StringBuilder sb = createStringBuilder("Hello");
 System.out.println("Initial content: " + getBuilderContent(sb));
