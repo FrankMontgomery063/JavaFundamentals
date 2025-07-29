@@ -28,19 +28,21 @@ public boolean areContentsEqual(String str1, String str2) {
 // Exercise 2: Null Handling
 // Return true if reference is null
 public boolean isNullReference(Object obj) {
-    // Your code here
-    
+    return obj == null;
+
+
 }
 
 // Convert object to string, return "null" if object is null
 public String safeToString(Object obj) {
-    // Your code here
+    return (obj == null) ? "null" : obj.toString();
+
     
 }
 
 // Return length of string, or 0 if null
 public int safeLength(String str) {
-    // Your code here
+    
     
 }
 
@@ -154,9 +156,10 @@ String str3 = new String("Hello");
 System.out.println("str1 == str2 (literals): " + areReferencesEqual(str1, str2));     // Should be true
 System.out.println("str1 == str3 (new object): " + areReferencesEqual(str1, str3));  // Should be false
 System.out.println("str1.equals(str3): " + areContentsEqual(str1, str3));            // Should be true
-/*
+
 System.out.println("\nTesting Null Handling:");
 System.out.println("null is null: " + isNullReference(null));              // Should be true
+/*
 System.out.println("'Hello' is null: " + isNullReference("Hello"));        // Should be false
 System.out.println("Safe toString of null: " + safeToString(null));        // Should be "null"
 System.out.println("Safe toString of 'Hi': " + safeToString("Hi"));        // Should be "Hi"
