@@ -99,59 +99,92 @@ public String getBuilderContent(StringBuilder sb) {
 // Exercise 5: Reference Comparison
 // Find first String with same content as target
 public String findStringInArray(String[] array, String target) {
-    // Your code here
-    
+    if (array == null || target == null) {
+        return null;
+    }
+    for (int i = 0; i < array.length; i++) {
+       if (array[i] != null && array[i].equals(target)) {
+            return array[i];
+        }
+    }
+    return null;
 }
 
 // Count how many elements are null
 public int countNullReferences(Object[] array) {
-    // Your code here
-    
+    if(array == null){
+        return 0;
+    }
+    int count = 0;
+    for (int i = 0; i < array.length; i++) {
+        if (array[i] == null){
+            count++;
+        }
+    }
+    return count;
 }
 
 // Replace all null elements with replacement string
 public void replaceNulls(String[] array, String replacement) {
-    // Your code here
-    
+    if (array == null == replacement == null) {
+        return;
+    }
+    for (int i = 0; i < array.length; i++) {
+        if (array[i] == null) {
+            array[i] = replacement;
+        }
+    }
 }
 
 // Exercise 6: Multiple References
 // Create two String literals and show they reference same object
 public boolean demonstrateStringPool() {
-    // Your code here - create two string literals with same value
-    // Return true if they reference the same object
+    String a = "hello";
+    String b = "hello";
+    return a == b;
     
 }
 
 // Create two String objects with 'new' and show they're different
 public boolean demonstrateNewString() {
-    // Your code here - create two strings with new String()
-    // Return true if they are different objects (but same content)
+    String a = new String("hello");
+    string b = new String("hello");
+    return a != b;
+    
     
 }
 
 // Swap two references in an array
 public void swapReferences(StringBuilder[] array, int index1, int index2) {
-    // Your code here
-    
+    if (array == null || index1 < 0 || index2 < 0 ||
+        index1 >= array.length || index2 >= array.length){
+        return;
+    }       
+    StringBuilder temp = array[index1];
+    array[index1] = array[index2];
+    array[index2 = temp];
 }
+
+
 
 // Exercise 7: Object Creation and References
 // Create and return new ArrayList<String>
 public ArrayList<String> createArrayList() {
-    // Your code here
+    return new ArrayList<String>();
     
 }
 
 // Add item to list
 public void addToList(ArrayList<String> list, String item) {
-    // Your code here
+    if (list != null && item != null) {
+        list.add(item);
+    }
     
 }
 
 // Return the same list reference
 public ArrayList<String> getListReference(ArrayList<String> list) {
-    // Your code here
+    return list;
     
 }
 
@@ -201,9 +234,10 @@ StringBuilder sb = createStringBuilder("Hello");
 System.out.println("Initial content: " + getBuilderContent(sb));
 appendToBuilder(sb, " World");
 System.out.println("After append: " + getBuilderContent(sb));
-/*
+
 System.out.println("\nTesting Reference Comparison:");
 String[] strings = {"Apple", null, "Banana", null, "Cherry"};
+
 System.out.println("Found string: " + findStringInArray(strings, "Banana"));
 System.out.println("Null count: " + countNullReferences(strings));
 replaceNulls(strings, "REPLACED");
@@ -220,4 +254,4 @@ addToList(list1, "Second");
 ArrayList<String> list2 = getListReference(list1);
 System.out.println("Same list reference: " + (list1 == list2));          // Should be true
 System.out.println("List content: " + list1);
-*/
+
