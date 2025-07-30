@@ -78,19 +78,21 @@ public void modifyArray(int[] array, int index, int newValue) {
 // Exercise 4: Object State Changes
 // Create StringBuilder with initial text
 public StringBuilder createStringBuilder(String initial) {
-    // Your code here
-    
+    return new StringBuilder(initial);
 }
+    
+
 
 // Add text to StringBuilder
-public void appendToBuilder(StringBuilder sb, String text) {
-    // Your code here
+public void appendToBuilder(StringBuilder sb, String text) 
+    if(sb != null && text!= null) {
+        sb.append (text);
     
 }
 
 // Get current content as String
 public String getBuilderContent(StringBuilder sb) {
-    // Your code here
+    return(sb== null)? "null" : sb.toString();
     
 }
 
@@ -191,13 +193,15 @@ modifyArray(original, 0, 99);
 System.out.println("Original after modify: " + java.util.Arrays.toString(original));     // [99, 2, 3]
 System.out.println("Reference copy after modify: " + java.util.Arrays.toString(refCopy)); // [99, 2, 3]
 System.out.println("Content copy after modify: " + java.util.Arrays.toString(contentCopy)); // [1, 2, 3]
-/*
+
 System.out.println("\nTesting Object State Changes:");
+
 StringBuilder sb = createStringBuilder("Hello");
+
 System.out.println("Initial content: " + getBuilderContent(sb));
 appendToBuilder(sb, " World");
 System.out.println("After append: " + getBuilderContent(sb));
-
+/*
 System.out.println("\nTesting Reference Comparison:");
 String[] strings = {"Apple", null, "Banana", null, "Cherry"};
 System.out.println("Found string: " + findStringInArray(strings, "Banana"));
