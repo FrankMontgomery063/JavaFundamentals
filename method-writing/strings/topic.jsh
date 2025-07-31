@@ -4,60 +4,94 @@
 // Exercise 1: String Basics
 // Return the length of a string (handle null strings)
 public int getStringLength(String text) {
-    // Your code here
+    
+    if (text == null) {
+        return 0; // Return 0 for null strings
+    }
+    return text.length(); // Return the length of the string
     
 }
 
 // Return true if string is null or empty
 public boolean isStringEmpty(String text) {
-    // Your code here
+    if (text == null || text.isEmpty()) {
+        return true; // Return true for null or empty strings
+    }
+    return false; // Return false for non-empty strings
     
 }
 
 // Exercise 2: String Comparison
 // Safely compare two strings for equality (handle nulls)
 public boolean areStringsEqual(String str1, String str2) {
-    // Your code here
+    if (str1 == null && str2 == null) {
+        return true; // Both are null
+    }
+    if (str1 == null || str2 == null) {
+        return false; // One is null, the other is not
+    }
+    return str1.equals(str2); // Compare using equals method
     
 }
 
 // Compare strings ignoring case differences
 public boolean compareStringsIgnoreCase(String str1, String str2) {
-    // Your code here
+    if (str1 == null && str2 == null) {
+        return true; // Both are null
+    }
+    if (str1 == null || str2 == null) {
+        return false; // One is null, the other is not
+    }
+    return str1.equalsIgnoreCase(str2); // Compare ignoring case
     
 }
 
 // Exercise 3: String Search and Contains
 // Return true if text contains the search string
 public boolean containsSubstring(String text, String search) {
-    // Your code here
+    if (text == null || search == null) {
+        return false; // If either is null, return false
+    }
+    return text.contains(search); // Use contains method to check for substring
     
 }
 
 // Return index of first occurrence of search in text (-1 if not found)
 public int findFirstPosition(String text, String search) {
-    // Your code here
+    if (text == null || search == null) {
+        return -1; // If either is null, return -1
+    }
+    return text.indexOf(search); // Use indexOf to find first occurrence
     
 }
 
 // Exercise 4: String Extraction
 // Return the first character of a string (handle empty strings)
 public char getFirstCharacter(String text) {
-    // Your code here
-    // Return a space ' ' for empty/null strings
+    
+    if (text == null || text.isEmpty()) {
+        return ' '; // Return a space ' ' for null or empty strings
+    }
+    return text.charAt(0); // Return the first character of the string
     
 }
 
 // Return the last character of a string
 public char getLastCharacter(String text) {
-    // Your code here
-    // Return a space ' ' for empty/null strings
+    if (text == null || text.isEmpty()) {
+        return ' '; // Return a space ' ' for null or empty strings
+    }
+    return text.charAt(text.length() - 1); // Return the last character of the string
+    
     
 }
 
 // Return substring from start to end index
 public String getSubstring(String text, int start, int end) {
-    // Your code here
+    if (text == null || start < 0 || end > text.length() || start >= end) {
+        return ""; // Return empty string for invalid parameters
+    }
+    return text.substring(start, end); // Return the substring from start to end index
     
 }
 
@@ -119,13 +153,15 @@ public boolean isPalindrome(String text) {
 }
 
 // Test your methods here - uncomment and modify as needed
-/*
+
 System.out.println("Testing String Basics:");
+
 System.out.println("Length of 'Hello': " + getStringLength("Hello"));      // Should print 5
+
 System.out.println("Length of null: " + getStringLength(null));             // Should print 0
 System.out.println("Is '' empty: " + isStringEmpty(""));                   // Should print true
 System.out.println("Is 'Hello' empty: " + isStringEmpty("Hello"));         // Should print false
-
+/*
 System.out.println("\nTesting String Comparison:");
 System.out.println("'Hello' equals 'Hello': " + areStringsEqual("Hello", "Hello"));     // Should print true
 System.out.println("'Hello' equals 'hello': " + areStringsEqual("Hello", "hello"));     // Should print false
