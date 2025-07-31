@@ -98,57 +98,109 @@ public String getSubstring(String text, int start, int end) {
 // Exercise 5: String Modification
 // Convert string to uppercase (handle null)
 public String makeUpperCase(String text) {
-    // Your code here
+    if (text == null) {
+        return null; // Return null for null strings
+    }
+    return text.toUpperCase(); // Convert to uppercase using toUpperCase method
     
 }
 
 // Convert string to lowercase (handle null)
 public String makeLowerCase(String text) {
-    // Your code here
+    return text == null ? null : text.toLowerCase(); // Return null for null strings, otherwise convert to lowercase
     
 }
 
 // Remove leading and trailing spaces
 public String trimWhitespace(String text) {
-    // Your code here
+    if (text == null) {
+        return null; // Return null for null strings
+    }
+    return text.trim(); // Use trim method to remove leading and trailing spaces
     
 }
 
 // Exercise 6: String Building and Joining
 // Join two strings together (handle nulls)
 public String concatenateStrings(String str1, String str2) {
-    // Your code here
+    if (str1 == null && str2 == null) {
+        return ""; // Return empty string if both are null
+    }
+    if (str1 == null) {
+        return str2; // Return str2 if str1 is null
+    }
+    if (str2 == null) {
+        return str1; // Return str1 if str2 is null
+    }
+    return str1 + str2; // Concatenate both strings
     
 }
 
 // Repeat a string the specified number of times
 public String repeatString(String text, int count) {
-    // Your code here
+    if (text == null || count < 0) {
+        return ""; // Return empty string for null text or negative count
+    }
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < count; i++) {
+        result.append(text); // Append the text count times
+    }
+    return result.toString(); // Convert StringBuilder to String and return
     
 }
 
 // Join array of strings with a separator
 public String joinWithSeparator(String[] words, String separator) {
-    // Your code here
+    if (words == null || words.length == 0) {
+        return ""; // Return empty string for null or empty array
+    }
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < words.length; i++) {
+        if (words[i] != null) {
+            result.append(words[i]); // Append each word
+        }
+        if (i < words.length - 1) {
+            result.append(separator); // Append separator except after the last word
+        }
+    }
+    return result.toString(); // Convert StringBuilder to String and return
     
 }
 
 // Exercise 7: String Validation and Analysis
 // Return true if email contains "@" and "." characters
 public boolean isValidEmail(String email) {
-    // Your code here
+    if (email == null || email.isEmpty()) {
+        return false; // Return false for null or empty email
+    }
+    return email.contains("@") && email.contains("."); // Check for "@" and 
     
 }
 
 // Count number of vowels (a, e, i, o, u) in string (case insensitive)
 public int countVowels(String text) {
-    // Your code here
+    if (text == null) {
+        return 0; // Return 0 for null strings
+    }
+    int count = 0;
+    String vowels = "aeiouAEIOU"; // Define vowels in both cases
+    for (char c : text.toCharArray()) {
+        if (vowels.indexOf(c) != -1) {
+            count++; // Increment count for each vowel found
+        }
+    }
+    return count; // Return the total count of vowels
     
 }
 
 // Return true if string reads same forwards and backwards (ignore case and spaces)
 public boolean isPalindrome(String text) {
-    // Your code here
+    if (text == null || text.isEmpty()) {
+        return false; // Return false for null or empty strings
+    }
+    String cleanedText = text.replaceAll("\\s+", "").toLowerCase(); // Remove spaces and convert to lowercase
+    String reversedText = new StringBuilder(cleanedText).reverse().toString(); // Reverse the cleaned text
+    return cleanedText.equals(reversedText); // Check if cleaned text is equal to reversed text
     
 }
 
@@ -161,7 +213,7 @@ System.out.println("Length of 'Hello': " + getStringLength("Hello"));      // Sh
 System.out.println("Length of null: " + getStringLength(null));             // Should print 0
 System.out.println("Is '' empty: " + isStringEmpty(""));                   // Should print true
 System.out.println("Is 'Hello' empty: " + isStringEmpty("Hello"));         // Should print false
-/*
+
 System.out.println("\nTesting String Comparison:");
 System.out.println("'Hello' equals 'Hello': " + areStringsEqual("Hello", "Hello"));     // Should print true
 System.out.println("'Hello' equals 'hello': " + areStringsEqual("Hello", "hello"));     // Should print false
@@ -195,4 +247,4 @@ System.out.println("'invalid' is valid email: " + isValidEmail("invalid"));     
 System.out.println("Vowels in 'Hello': " + countVowels("Hello"));            // Should print 2
 System.out.println("'racecar' is palindrome: " + isPalindrome("racecar"));   // Should print true
 System.out.println("'hello' is palindrome: " + isPalindrome("hello"));       // Should print false
-*/
+
