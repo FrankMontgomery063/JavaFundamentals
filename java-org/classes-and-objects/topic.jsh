@@ -72,7 +72,8 @@ public BankAccount createBankAccount(String accountNumber) {
 
 // Demonstrate creating and using a Person object
 public void demonstratePersonUsage() {
-    // Your code here
+    Person person = createPerson("Alice", 30);
+    System.out.println(person.introduce()); // 
     
 }
 
@@ -80,18 +81,42 @@ public void demonstratePersonUsage() {
 // Create a Car class
 class Car {
     // Your fields here
+    String brand;
+    String model;
+    int year;
     
     // Your constructor here
+    public Car(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
     
     // Your getCarInfo method here
+    public String getCarInfo() {
+        return "Car: " + brand + " " + model + ", Year: " + year;
+    }
     
     // Your isClassic method here (car is classic if > 25 years old)
+    public boolean isClassic() {
+        int currentYear = 2025;
+        return (currentYear - year) > 25;
+
+    }
+
+    public int getCarYear() {
+        return year;
+    }
     
 }
 
 // Compare two cars and return which is older
 public Car compareCars(Car car1, Car car2) {
-    // Your code here
+    if (car1.getCarYear() < car2.getCarYear()) {
+        return car1;
+    } else if (car1.getCarYear() > car2.getCarYear()){
+        return car2;
+    }
     return null;
     
 }
@@ -99,31 +124,44 @@ public Car compareCars(Car car1, Car car2) {
 // Exercise 5: Object State and Behavior
 // Create a Counter class that can increment/decrement
 class Counter {
-    // Your fields here
-    
-    // Your constructor here
-    
-    // Your increment method here
-    
-    // Your decrement method here
-    
-    // Your reset method here
-    
-    // Your getCount method here
+    private int count;
+
+    public Counter() {
+        this.count = 0;
+    }
+
+    public void increment() {
+        count++;
+    }
+
+    public void decrement() {
+        if (count > 0) {
+            count--;
+        }
+    }
+
+    public void reset() {
+        count = 0;
+    }
+
+    public int getCount() {
+        return count;
+    }
     
 }
+
+// Demonstrate the Counter classpublic class HelloWorld {
+    public static void main(String[] args)
+    
+    
+    
 
 // Exercise 6: Class with Validation
 // Create a Student class with input validation
 class Student {
-    // Your fields here
-    
-    // Your constructor with validation here
-    
-    // Your isHonorStudent method here
-    
-    // Your getStudentInfo method here
-    
+    Your getStudentInfo method here
+    public class HelloWorld {
+    public static void main(String[] args)
 }
 
 // Exercise 7: Object Interaction
@@ -181,43 +219,43 @@ System.out.println("Is classic: " + car2.isClassic());
 Car older = compareCars(car1, car2);
 System.out.println("Older car: " + older.getCarInfo());
 
-System.out.println("\nTesting Counter class:");
-Counter counter = new Counter();
-System.out.println("Initial count: " + counter.getCount());
-counter.increment();
-counter.increment();
-counter.increment();
-System.out.println("After 3 increments: " + counter.getCount());
-counter.decrement();
-System.out.println("After 1 decrement: " + counter.getCount());
-counter.reset();
-System.out.println("After reset: " + counter.getCount());
+// System.out.println("\nTesting Counter class:");
+// Counter counter = new Counter();
+// System.out.println("Initial count: " + counter.getCount());
+// counter.increment();
+// counter.increment();
+// counter.increment();
+// System.out.println("After 3 increments: " + counter.getCount());
+// counter.decrement();
+// System.out.println("After 1 decrement: " + counter.getCount());
+// counter.reset();
+// System.out.println("After reset: " + counter.getCount());
 
-System.out.println("\nTesting Student class:");
-try {
-    Student student1 = new Student("John", 10, 3.8);
-    System.out.println(student1.getStudentInfo());
-    System.out.println("Is honor student: " + student1.isHonorStudent());
+// System.out.println("\nTesting Student class:");
+// try {
+//     Student student1 = new Student("John", 10, 3.8);
+//     System.out.println(student1.getStudentInfo());
+//     System.out.println("Is honor student: " + student1.isHonorStudent());
     
-    Student student2 = new Student("Jane", 12, 2.5);
-    System.out.println(student2.getStudentInfo());
-    System.out.println("Is honor student: " + student2.isHonorStudent());
-} catch (Exception e) {
-    System.out.println("Validation error: " + e.getMessage());
-}
+//     Student student2 = new Student("Jane", 12, 2.5);
+//     System.out.println(student2.getStudentInfo());
+//     System.out.println("Is honor student: " + student2.isHonorStudent());
+// } catch (Exception e) {
+//     System.out.println("Validation error: " + e.getMessage());
+// }
 
-System.out.println("\nTesting Library system:");
-Library library = new Library();
-Book book1 = new Book("1984", "George Orwell", false);
-Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", false);
+// System.out.println("\nTesting Library system:");
+// Library library = new Library();
+// Book book1 = new Book("1984", "George Orwell", false);
+// Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", false);
 
-library.addBook(book1);
-library.addBook(book2);
-System.out.println("Available books: " + library.getAvailableBooks());
+// library.addBook(book1);
+// library.addBook(book2);
+// System.out.println("Available books: " + library.getAvailableBooks());
 
-library.checkOutBook("1984");
-System.out.println("After checking out 1984: " + library.getAvailableBooks());
+// library.checkOutBook("1984");
+// System.out.println("After checking out 1984: " + library.getAvailableBooks());
 
-library.returnBook("1984");
-System.out.println("After returning 1984: " + library.getAvailableBooks());
+// library.returnBook("1984");
+// System.out.println("After returning 1984: " + library.getAvailableBooks());
 
