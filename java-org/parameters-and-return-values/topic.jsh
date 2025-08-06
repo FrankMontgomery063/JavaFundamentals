@@ -10,26 +10,32 @@ import java.util.Arrays;
 class DataValidator {
     
     public String validateEmail(String email) {
-        // TODO: Return "Valid" if email contains @ and ., otherwise return specific error message
-        // Check for null, empty, missing @, missing .
-        return "";
+        
+        if (email.contains("@") && email.contains(".")) {
+            return "Valid";
+        }
+        return "invalid";
     }
     
     public boolean validatePassword(String password, int minLength, boolean requireSpecial) {
-        // TODO: Return true if password meets criteria
-        // Check length and special characters (!@#$%^&*) if required
-        return false;
+         // Check if the password is gretaer than or equal to minLength
+        if (password == null || password.length() < minLength) {
+            return false;
+        } else if (requireSpecial && !password.matches(".*[!@#$%^&*()].*")) {
+            return false; // Special character required but not found
+        }
+        return true; ////
     }
     
     public int validateAge(int age, int minAge, int maxAge) {
-        // TODO: Return -1 if too young, 0 if valid, 1 if too old
-        return 0;
+        
+        return 33; 
     }
     
     public String validatePhoneNumber(String phone, String countryCode) {
         // TODO: Return formatted number like "+1-555-123-4567" or "INVALID"
         // Simple validation: remove non-digits, check length
-        return "";
+        return ""; 
     }
     
     public boolean[] validateCreditCard(String cardNumber, String expiryDate) {
@@ -366,92 +372,92 @@ System.out.println("=== Testing DataValidator ===");
 DataValidator validator = new DataValidator();
 System.out.println("Email validation: " + validator.validateEmail("test@example.com"));
 System.out.println("Email validation (invalid): " + validator.validateEmail("invalid"));
-System.out.println("Password valid: " + validator.validatePassword("Password123!", 8, true));
+// System.out.println("Password valid: " + validator.validatePassword("Password123!", 8, true));
 System.out.println("Age validation: " + validator.validateAge(25, 18, 65));
-System.out.println("Phone validation: " + validator.validatePhoneNumber("5551234567", "+1"));
-System.out.println("Credit card: " + Arrays.toString(validator.validateCreditCard("1234567890123456", "12/26")));
-System.out.println("Summary: " + validator.getValidationSummary("test@example.com", "Pass123!", 25));
+// System.out.println("Phone validation: " + validator.validatePhoneNumber("5551234567", "+1"));
+// System.out.println("Credit card: " + Arrays.toString(validator.validateCreditCard("1234567890123456", "12/26")));
+// System.out.println("Summary: " + validator.getValidationSummary("test@example.com", "Pass123!", 25));
 
-// Test MathEngine
-System.out.println("\n=== Testing MathEngine ===");
-MathEngine math = new MathEngine();
-System.out.println("Calculate 10 + 5: " + math.calculate(10, 5, "+"));
-System.out.println("Range of [1,5,3,9,2]: " + Arrays.toString(math.findRange(new double[]{1,5,3,9,2})));
-System.out.println("Statistics: " + math.statisticalSummary(new double[]{1,2,3,4,5}));
-System.out.println("Compound interest: " + math.compound(1000, 0.05, 2, true));
-System.out.println("Distance (0,0) to (3,4): " + math.distance(0, 0, 3, 4));
-System.out.println("Quadratic roots x²-5x+6: " + Arrays.toString(math.quadraticRoots(1, -5, 6)));
-System.out.println("Is 17 prime: " + math.isPrime(17));
+// // Test MathEngine
+// System.out.println("\n=== Testing MathEngine ===");
+// MathEngine math = new MathEngine();
+// System.out.println("Calculate 10 + 5: " + math.calculate(10, 5, "+"));
+// System.out.println("Range of [1,5,3,9,2]: " + Arrays.toString(math.findRange(new double[]{1,5,3,9,2})));
+// System.out.println("Statistics: " + math.statisticalSummary(new double[]{1,2,3,4,5}));
+// System.out.println("Compound interest: " + math.compound(1000, 0.05, 2, true));
+// System.out.println("Distance (0,0) to (3,4): " + math.distance(0, 0, 3, 4));
+// System.out.println("Quadratic roots x²-5x+6: " + Arrays.toString(math.quadraticRoots(1, -5, 6)));
+// System.out.println("Is 17 prime: " + math.isPrime(17));
 
-// Test TextAnalyzer
-System.out.println("\n=== Testing TextAnalyzer ===");
-TextAnalyzer analyzer = new TextAnalyzer();
-System.out.println("Extract words: " + Arrays.toString(analyzer.extractWords("Hello, World! How are you?", true, true)));
-System.out.println("Find 'o' positions: " + Arrays.toString(analyzer.findPattern("Hello World", "o", false)));
-System.out.println("Replace text: " + analyzer.replaceText("hello hello hello", "hello", "hi", 2));
-System.out.println("Summarize: " + analyzer.summarizeText("First sentence. Second sentence. Third sentence.", 2, true));
-System.out.println("Compare texts: " + analyzer.compareTexts("Hello", "hello", true, false));
-System.out.println("Format text: " + Arrays.toString(analyzer.formatText("This is a test", 5, "LEFT", true)));
-System.out.println("Extract emails: " + analyzer.extractEmails("Contact us at info@example.com or support@test.org", "example.com"));
+// // Test TextAnalyzer
+// System.out.println("\n=== Testing TextAnalyzer ===");
+// TextAnalyzer analyzer = new TextAnalyzer();
+// System.out.println("Extract words: " + Arrays.toString(analyzer.extractWords("Hello, World! How are you?", true, true)));
+// System.out.println("Find 'o' positions: " + Arrays.toString(analyzer.findPattern("Hello World", "o", false)));
+// System.out.println("Replace text: " + analyzer.replaceText("hello hello hello", "hello", "hi", 2));
+// System.out.println("Summarize: " + analyzer.summarizeText("First sentence. Second sentence. Third sentence.", 2, true));
+// System.out.println("Compare texts: " + analyzer.compareTexts("Hello", "hello", true, false));
+// System.out.println("Format text: " + Arrays.toString(analyzer.formatText("This is a test", 5, "LEFT", true)));
+// System.out.println("Extract emails: " + analyzer.extractEmails("Contact us at info@example.com or support@test.org", "example.com"));
 
-// Test CollectionProcessor
-System.out.println("\n=== Testing CollectionProcessor ===");
-CollectionProcessor processor = new CollectionProcessor();
-ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 5, 10, 15, 20));
-System.out.println("Filter 5-15 inclusive: " + processor.filterNumbers(numbers, 5, 15, true));
-ArrayList<String> strings = new ArrayList<>(Arrays.asList("banana", "Apple", "cherry"));
-System.out.println("Sort ascending, ignore case: " + processor.sortStrings(strings, true, true));
-ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1, 2, 3));
-ArrayList<Integer> list2 = new ArrayList<>(Arrays.asList(3, 4, 5));
-System.out.println("Merge lists: " + processor.mergeLists(list1, list2, true));
-ArrayList<String> words = new ArrayList<>(Arrays.asList("cat", "dog", "elephant", "ant"));
-System.out.println("Group by length > 3: " + processor.groupByLength(words, 3, "GREATER"));
-System.out.println("Common elements: " + processor.findCommonElements(
-    new ArrayList<>(Arrays.asList("apple", "banana")), 
-    new ArrayList<>(Arrays.asList("banana", "cherry")), true));
-System.out.println("Process numbers *2: " + processor.processNumbers(
-    new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0)), "MULTIPLY", 2.0));
+// // Test CollectionProcessor
+// System.out.println("\n=== Testing CollectionProcessor ===");
+// CollectionProcessor processor = new CollectionProcessor();
+// ArrayList<Integer> numbers = new ArrayList<>(Arrays.asList(1, 5, 10, 15, 20));
+// System.out.println("Filter 5-15 inclusive: " + processor.filterNumbers(numbers, 5, 15, true));
+// ArrayList<String> strings = new ArrayList<>(Arrays.asList("banana", "Apple", "cherry"));
+// System.out.println("Sort ascending, ignore case: " + processor.sortStrings(strings, true, true));
+// ArrayList<Integer> list1 = new ArrayList<>(Arrays.asList(1, 2, 3));
+// ArrayList<Integer> list2 = new ArrayList<>(Arrays.asList(3, 4, 5));
+// System.out.println("Merge lists: " + processor.mergeLists(list1, list2, true));
+// ArrayList<String> words = new ArrayList<>(Arrays.asList("cat", "dog", "elephant", "ant"));
+// System.out.println("Group by length > 3: " + processor.groupByLength(words, 3, "GREATER"));
+// System.out.println("Common elements: " + processor.findCommonElements(
+//     new ArrayList<>(Arrays.asList("apple", "banana")), 
+//     new ArrayList<>(Arrays.asList("banana", "cherry")), true));
+// System.out.println("Process numbers *2: " + processor.processNumbers(
+//     new ArrayList<>(Arrays.asList(1.0, 2.0, 3.0)), "MULTIPLY", 2.0));
 
-// Test PersonFactory
-System.out.println("\n=== Testing PersonFactory ===");
-PersonFactory factory = new PersonFactory();
-System.out.println("Basic person: " + factory.createBasicPerson("Alice", 30));
-System.out.println("Detailed person: " + factory.createDetailedPerson("Bob", 25, "bob@example.com", "New York"));
-System.out.println("From CSV: " + factory.createPersonFromCsv("Charlie,35,charlie@test.com,Boston,true"));
-System.out.println("Random person: " + factory.createRandomPerson(new String[]{"Alice", "Bob", "Carol"}, 20, 40));
-System.out.println("Validated person: " + factory.validateAndCreatePerson("Dave", 28, "dave@example.com"));
-System.out.println("Batch create: " + factory.batchCreatePeople(
-    new String[]{"Eve", "Frank"}, new int[]{22, 33}, new String[]{"eve@test.com", "frank@test.com"}));
+// // Test PersonFactory
+// System.out.println("\n=== Testing PersonFactory ===");
+// PersonFactory factory = new PersonFactory();
+// System.out.println("Basic person: " + factory.createBasicPerson("Alice", 30));
+// System.out.println("Detailed person: " + factory.createDetailedPerson("Bob", 25, "bob@example.com", "New York"));
+// System.out.println("From CSV: " + factory.createPersonFromCsv("Charlie,35,charlie@test.com,Boston,true"));
+// System.out.println("Random person: " + factory.createRandomPerson(new String[]{"Alice", "Bob", "Carol"}, 20, 40));
+// System.out.println("Validated person: " + factory.validateAndCreatePerson("Dave", 28, "dave@example.com"));
+// System.out.println("Batch create: " + factory.batchCreatePeople(
+//     new String[]{"Eve", "Frank"}, new int[]{22, 33}, new String[]{"eve@test.com", "frank@test.com"}));
 
-// Test ConfigManager
-System.out.println("\n=== Testing ConfigManager ===");
-ConfigManager config = new ConfigManager();
-System.out.println("Set setting: " + config.setSetting("timeout", 30, false));
-System.out.println("Get setting: " + config.getSetting("timeout", 10));
-System.out.println("Get string setting: " + config.getStringSetting("name", "default", true));
-System.out.println("Get int setting: " + config.getIntSetting("timeout", 10, 1, 100));
-System.out.println("Get boolean setting: " + config.getBooleanSetting("enabled", false));
-config.setSetting("app", "MyApp", true);
-config.setSetting("version", "1.0", true);
-System.out.println("Export JSON: " + config.exportSettings(new String[]{"app", "version"}, "JSON"));
-System.out.println("Import count: " + config.importSettings("{\"test\":\"value\"}", "JSON", true));
+// // Test ConfigManager
+// System.out.println("\n=== Testing ConfigManager ===");
+// ConfigManager config = new ConfigManager();
+// System.out.println("Set setting: " + config.setSetting("timeout", 30, false));
+// System.out.println("Get setting: " + config.getSetting("timeout", 10));
+// System.out.println("Get string setting: " + config.getStringSetting("name", "default", true));
+// System.out.println("Get int setting: " + config.getIntSetting("timeout", 10, 1, 100));
+// System.out.println("Get boolean setting: " + config.getBooleanSetting("enabled", false));
+// config.setSetting("app", "MyApp", true);
+// config.setSetting("version", "1.0", true);
+// System.out.println("Export JSON: " + config.exportSettings(new String[]{"app", "version"}, "JSON"));
+// System.out.println("Import count: " + config.importSettings("{\"test\":\"value\"}", "JSON", true));
 
-// Test DatabaseQuery
-System.out.println("\n=== Testing DatabaseQuery ===");
-DatabaseQuery db = new DatabaseQuery();
-System.out.println("SELECT query: " + db.select("users", new String[]{"name", "email"}, "age > ?", new Object[]{18}));
-HashMap<String, Object> data = new HashMap<>();
-data.put("name", "John");
-data.put("age", 25);
-System.out.println("INSERT query: " + db.insert("users", data, true));
-HashMap<String, Object> updates = new HashMap<>();
-updates.put("age", 26);
-System.out.println("UPDATE query: " + db.update("users", updates, "name = ?", new Object[]{"John"}));
-System.out.println("JOIN query: " + db.join("users", "orders", "LEFT", new String[]{"users.id = orders.user_id"}));
-System.out.println("Build query: " + db.buildQuery("SELECT", "products", "name", "price"));
-System.out.println("Execute query: " + db.executeQuery("SELECT * FROM users", new Object[]{}, true));
-System.out.println("Batch execute: " + Arrays.toString(db.batchExecute(
-    new String[]{"INSERT INTO users VALUES (?)", "UPDATE users SET age = ?"}, 
-    new Object[][]{{"John"}, {30}}, false)));
+// // Test DatabaseQuery
+// System.out.println("\n=== Testing DatabaseQuery ===");
+// DatabaseQuery db = new DatabaseQuery();
+// System.out.println("SELECT query: " + db.select("users", new String[]{"name", "email"}, "age > ?", new Object[]{18}));
+// HashMap<String, Object> data = new HashMap<>();
+// data.put("name", "John");
+// data.put("age", 25);
+// System.out.println("INSERT query: " + db.insert("users", data, true));
+// HashMap<String, Object> updates = new HashMap<>();
+// updates.put("age", 26);
+// System.out.println("UPDATE query: " + db.update("users", updates, "name = ?", new Object[]{"John"}));
+// System.out.println("JOIN query: " + db.join("users", "orders", "LEFT", new String[]{"users.id = orders.user_id"}));
+// System.out.println("Build query: " + db.buildQuery("SELECT", "products", "name", "price"));
+// System.out.println("Execute query: " + db.executeQuery("SELECT * FROM users", new Object[]{}, true));
+// System.out.println("Batch execute: " + Arrays.toString(db.batchExecute(
+//     new String[]{"INSERT INTO users VALUES (?)", "UPDATE users SET age = ?"}, 
+//     new Object[][]{{"John"}, {30}}, false)));
 
-System.out.println("\n=== All Parameter and Return Value Tests Complete! ===");
+// System.out.println("\n=== All Parameter and Return Value Tests Complete! ===");

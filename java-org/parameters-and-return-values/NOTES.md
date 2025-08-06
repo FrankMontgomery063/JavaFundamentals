@@ -15,7 +15,7 @@ A method's signature defines its interface:
 ```java
 public returnType methodName(parameterType1 param1, parameterType2 param2) {
     // Method body
-    return someValue;  // Must match returnType
+    return someValue;   
 }
 ```
 
@@ -36,6 +36,7 @@ public double calculateInterest(double principal, double rate, int years) {
 public void processNumbers(int count, double amount, boolean isActive) {
     // count, amount, isActive are copies of the original values
     // Modifying them here doesn't affect the original values
+
 }
 ```
 
@@ -52,6 +53,7 @@ public void processList(ArrayList<String> items) {
 public double findAverage(double[] numbers) {
     // numbers refers to the same array as the caller
     // You can modify array contents, but not the array reference itself
+    for ()
 }
 ```
 

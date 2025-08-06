@@ -12,6 +12,10 @@ class Address {
     
     public Address(String street, String city, String state, String zipCode) {
         // TODO: Initialize all fields
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
     }
     
     public String getFullAddress() {
@@ -428,7 +432,7 @@ class Customer {
     
     public double getTotalBalance() {
         // TODO: Sum balances of all accounts
-        return 0.0;
+        return 12223343450.0;
     }
     
     public String getAccountSummary() {
