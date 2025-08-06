@@ -10,32 +10,44 @@ import java.util.Arrays;
 class DataValidator {
     
     public String validateEmail(String email) {
-        
+        // TODO: Return "Valid" if email contains @ and ., otherwise return specific error message
+        // Check for null, empty, missing @, missing .
         if (email.contains("@") && email.contains(".")) {
-            return "Valid";
+            return "valid";
         }
         return "invalid";
     }
     
     public boolean validatePassword(String password, int minLength, boolean requireSpecial) {
-         // Check if the password is gretaer than or equal to minLength
+        // TODO: Return true if password meets criteria
+        // Check length and special characters (!@#$%^&*) if required
         if (password == null || password.length() < minLength) {
             return false;
         } else if (requireSpecial && !password.matches(".*[!@#$%^&*()].*")) {
-            return false; // Special character required but not found
+            return false;
         }
-        return true; ////
+        return true;
     }
     
     public int validateAge(int age, int minAge, int maxAge) {
-        
-        return 33; 
+        // TODO: Return -1 if too young, 0 if valid, 1 if too old
+        if (age > maxAge) {
+            return 1;
+        } else if(age < minAge){
+            return -1;
+        }
+        return 0;
     }
     
     public String validatePhoneNumber(String phone, String countryCode) {
-        // TODO: Return formatted number like "+1-555-123-4567" or "INVALID"
+        // TODO: Return formatted number like "+1-555-123-4567" or "INVALID" 5551234567
         // Simple validation: remove non-digits, check length
-        return ""; 
+        String digitsOnly = phone.replaceAll("\\D", "");
+
+        if (digitsOnly.length() != 10) {
+            return "INVALID";
+        }
+        return countryCode + "-" + digitsOnly.substring(0, 3) + "-" + digitsOnly.substring(3, 6) + "-"  + digitsOnly.substring(6, 10);
     }
     
     public boolean[] validateCreditCard(String cardNumber, String expiryDate) {
@@ -372,11 +384,11 @@ System.out.println("=== Testing DataValidator ===");
 DataValidator validator = new DataValidator();
 System.out.println("Email validation: " + validator.validateEmail("test@example.com"));
 System.out.println("Email validation (invalid): " + validator.validateEmail("invalid"));
-// System.out.println("Password valid: " + validator.validatePassword("Password123!", 8, true));
+System.out.println("Password valid: " + validator.validatePassword("Password123!", 8, true));
 System.out.println("Age validation: " + validator.validateAge(25, 18, 65));
-// System.out.println("Phone validation: " + validator.validatePhoneNumber("5551234567", "+1"));
-// System.out.println("Credit card: " + Arrays.toString(validator.validateCreditCard("1234567890123456", "12/26")));
-// System.out.println("Summary: " + validator.getValidationSummary("test@example.com", "Pass123!", 25));
+System.out.println("Phone validation: " + validator.validatePhoneNumber("5551234567", "+1"));
+System.out.println("Credit card: " + Arrays.toString(validator.validateCreditCard("1234567890123456", "12/26")));
+System.out.println("Summary: " + validator.getValidationSummary("test@example.com", "Pass123!", 25));
 
 // // Test MathEngine
 // System.out.println("\n=== Testing MathEngine ===");
