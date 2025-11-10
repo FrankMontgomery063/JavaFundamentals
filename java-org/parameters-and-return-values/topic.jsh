@@ -53,59 +53,154 @@ class DataValidator {
     public boolean[] validateCreditCard(String cardNumber, String expiryDate) {
         // TODO: Return array [isValidNumber, isNotExpired]
         // Simple check: 16 digits for number, MM/YY format for expiry (assume current year 2025)
-        return new boolean[2];
+        boolean[] cardInfo = new boolean[2]; // [false , false]
+        int cardNum = cardNumber.length();
+        int expireMonth =  Integer.parseInt(expiryDate.substring(0, 2));
+        int expireYear = Integer.parseInt(expiryDate.substring(3, 5));
+
+        if (cardNum == 16) {
+            cardInfo[0] = true;        // [true, false]
+        }
+
+        if (expireYear >= 25) {
+            cardInfo[1] = true;   // [true, true]
+        }
+
+        return cardInfo;
     }
     
     public String getValidationSummary(String email, String password, int age) {
         // TODO: Return summary string of all validations
         // Format: "Email: [result], Password: [result], Age: [result]"
-        return "";
+
+        
+        return "Format: " + validateEmail(email) + ", Password: " + String.valueOf(validatePassword(password, 4, true)) + ", Age: " + Integer.toString(validateAge(age, 6, 18));
     }
 }
 
+System.out.println("=== Test2 ===");
 // Exercise 2: Mathematical operations with various parameters
 class MathEngine {
     
     public double calculate(double a, double b, String operation) {
-        // TODO: Perform operation (+, -, *, /, %)
-        // Return 0.0 for invalid operation or division by zero
-        return 0.0;
+         switch (operation) {
+            case "+":
+                return a + b;
+            case "-":
+                return a - b;
+            case "*":
+                return a * b;
+            case "/":
+                if (b == 0) {
+                    return 0.0; // Division by zero
+                }
+                return a / b;
+            case "%":
+                if (b == 0) {
+                    return 0.0; // Modulo by zero
+                }
+                return a % b;
+            default:
+                return 0.0; // Invalid operation
+        }
     }
-    
+
     public double[] findRange(double[] numbers) {
-        // TODO: Return [min, max] or [0.0, 0.0] if empty array
-        return new double[2];
+        if (numbers == null || numbers.length == 0) {
+            return new double[2]; 
+        }
+        double min = numbers[0];
+        double max = numbers[0];
+        for (double num : numbers) {
+            if (num < min) {
+                min = num;
+            } else if (num > max) {
+                max = num;
+            }
+        }
+        return new double[]{ min, max };
     }
-    
+
+    // mean is the average of a set of numbers
+    // the median is the middle value when the numbers are sorted
+    // the mode is the number that appears most frequently
     public String statisticalSummary(double[] values) {
-        // TODO: Return "Mean: X.XX, Median: Y.YY, Mode: Z.ZZ"
-        // Return "No data" if array is empty
-        return "";
+        String mean;
+        String median;
+        String mode;
+        double meanSum = 0.0;
+
+        for (double v : values) {
+            meanSum += v;
+        }
+
+        mean = Double.toString(meanSum / values.length);
+
+        Arrays.sort(values); 
+        if (values.length % 2 == 0) {
+            median = Double.toString((values[values.length / 2 - 1] + values[values.length / 2]) / 2);
+        } else {
+            median = Double.toString(values[values.length / 2]);
+        }
+        // Mode calculation
+        HashMap<Double, Integer> frequencyMap = new HashMap<>();
+
+        int maxCount = 1;
+
+        for (double num : values) {
+            frequencyMap.put(num, frequencyMap.getOrDefault(num, 0) + 1);
+            if (frequencyMap.get(num) > maxCount) {
+                maxCount = frequencyMap.get(num);
+            }
+        }
+        mode = Integer.toString(maxCount);
+
+        return "Mean: " + mean + ", " + "Median: " + median + ", " + "Mode: " + mode;
+
     }
     
     public double compound(double principal, double rate, int years, boolean isAnnual) {
-        // TODO: Calculate compound interest
-        // If isAnnual=true: A = P(1 + r)^t, else: A = P(1 + r/12)^(12*t)
-        return 0.0;
+        if (isAnnual) {
+            return principal * Math.pow(1 + rate, years);
+        } else {
+            return principal * Math.pow(1 + rate / 12, 12 * years);
+        }
     }
     
     public double distance(double x1, double y1, double x2, double y2) {
-        // TODO: Return Euclidean distance between two points
-        // Distance = sqrt((x2-x1)² + (y2-y1)²)
-        return 0.0;
+
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
     
     public String[] quadraticRoots(double a, double b, double c) {
-        // TODO: Solve ax² + bx + c = 0
-        // Return array of solutions or ["NO_REAL_ROOTS"] if discriminant < 0
-        return new String[0];
+
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant < 0) {
+            return new String[] { "NO_REAL_ROOTS" };
+        } else if (discriminant == 0) {
+            double root = -b / (2 * a);
+            return new String[] { String.valueOf(root) };
+        } else {
+            double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            return new String[] { String.valueOf(root1), String.valueOf(root2) };
+        }
     }
     
     public boolean isPrime(long number) {
-        // TODO: Check if number is prime (handle large numbers efficiently)
-        return false;
+        if (number <= 1) return false;
+        if (number <= 3) return true;
+        if (number % 2 == 0 || number % 3 == 0) return false;
+
+        for (long i = 5; i * i <= number; i += 6) {
+            if (number % i == 0 || number % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
+System.out.println("=== Test3 ===");
 
 // Exercise 3: String processing with parameter variations
 class TextAnalyzer {
@@ -390,12 +485,12 @@ System.out.println("Phone validation: " + validator.validatePhoneNumber("5551234
 System.out.println("Credit card: " + Arrays.toString(validator.validateCreditCard("1234567890123456", "12/26")));
 System.out.println("Summary: " + validator.getValidationSummary("test@example.com", "Pass123!", 25));
 
-// // Test MathEngine
-// System.out.println("\n=== Testing MathEngine ===");
-// MathEngine math = new MathEngine();
-// System.out.println("Calculate 10 + 5: " + math.calculate(10, 5, "+"));
-// System.out.println("Range of [1,5,3,9,2]: " + Arrays.toString(math.findRange(new double[]{1,5,3,9,2})));
-// System.out.println("Statistics: " + math.statisticalSummary(new double[]{1,2,3,4,5}));
+//  Test MathEngine
+   System.out.println("\n=== Testing MathEngine ===");
+   MathEngine math = new MathEngine();
+   System.out.println("Calculate 10 + 5: " + math.calculate(10, 5, "+"));
+   System.out.println("Range of [1,5,3,9,2]: " + Arrays.toString(math.findRange(new double[]{1,5,3,9,2})));
+   System.out.println("Statistics: " + math.statisticalSummary(new double[]{1,2,3,4,5,5}));
 // System.out.println("Compound interest: " + math.compound(1000, 0.05, 2, true));
 // System.out.println("Distance (0,0) to (3,4): " + math.distance(0, 0, 3, 4));
 // System.out.println("Quadratic roots x²-5x+6: " + Arrays.toString(math.quadraticRoots(1, -5, 6)));

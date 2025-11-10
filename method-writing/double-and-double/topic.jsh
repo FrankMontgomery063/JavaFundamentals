@@ -11,8 +11,8 @@ public double calculateSum(double a, double b) {
 
 // Return the average of three doubles
 public double calculateAverage(double a, double b, double c) {
-    return a * b;
-    
+    return (a + b + c) / 3.0;
+
 }
 
 // Exercise 2: Math Operations
